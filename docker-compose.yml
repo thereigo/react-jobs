@@ -1,0 +1,36 @@
+version: "3.8"
+services:
+  react:
+    image: node:latest
+    container_name: react_jobs
+    working_dir: /app
+    volumes:
+      - .:/app
+      - /app/node_modules/
+    command: sh -c "npm install && npm run dev"
+    ports:
+      - 8000:8000
+    develop:
+      watch:
+        - path: ./package.json
+          action: rebuild
+        - path: ./package-lock.json
+          action: rebuild
+        - path: ./vite.config.js
+          action: rebuild
+        - path: .
+          target: /app
+          action: sync
+    tty: true
+
+  json_server:
+    image: node:latest
+    container_name: json_server
+    working_dir: /app
+    volumes:
+    - .:/app
+    - /app/node_modules/
+    command: sh -c "npm install -g json-server && json-server --watch jobs.json --port 3000"
+    ports:
+      - 3000:3000
+    tty: true
