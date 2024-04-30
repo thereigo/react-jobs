@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   react:
-    image: node:latest
+    image: node:alpine:latest
     container_name: react_jobs
     working_dir: /app
     volumes:
@@ -24,7 +24,7 @@ services:
     tty: true
 
   json_server:
-    image: node:latest
+    image: node:alpine:latest
     container_name: json_server
     working_dir: /app
     volumes:
