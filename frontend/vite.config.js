@@ -13,7 +13,7 @@ export default defineConfig({
     },
     proxy: {
       '/api': {
-        target: import.meta.env.VITE_API_URL || 'http://localhost:3000',
+        target: 'https://react-jobs-express-api.onrender.com' || 'http://localhost:3000',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
