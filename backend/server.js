@@ -28,6 +28,30 @@ app.get('/jobs/:id', (req, res) => {
   }
 });
 
+// Add a job
+app.post('/jobs', (req, res) => {
+  const newJob = req.body;
+  data.jobs.push(newJob);
+  res.status(201).json(newJob);
+});
+
+// Delete a job
+app.delete('/jobs/:id', (req, res) => {
+  data.jobs = data.jobs.filter(job => job.id !== req.params.id);
+  res.status(204).send();
+});
+
+// Update a job
+app.put('/jobs/:id', (req, res) => {
+  const index = data.jobs.findIndex(job => job.id === req.params.id);
+  if (index !== -1) {
+    data.jobs[index] = req.body;
+    res.json(data.jobs[index]);
+  } else {
+    res.status(404).send('Job not found');
+  }
+});
+
 // Start the server
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Server listening on port ${port}`));
