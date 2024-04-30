@@ -1,7 +1,7 @@
 # React Jobs App
 
-![alt text][logo]
-[logo]: https://github.com/thereigo/react-jobs/blob/main/logo.png "Logo Title"
+
+[!LOGO](https://github.com/thereigo/react-jobs/blob/main/logo.png)
 
 This is a job listing application built with React and Express.js
 
