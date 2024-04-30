@@ -11,7 +11,12 @@ const data = require('./jobs.json');
 
 // Define your endpoints
 app.get('/jobs', (req, res) => {
-  res.json(data.jobs);
+  const limit = parseInt(req.query._limit);
+  if (limit) {
+    res.json(data.jobs.slice(0, limit));
+  } else {
+    res.json(data.jobs);
+  }
 });
 
 app.get('/jobs/:id', (req, res) => {
