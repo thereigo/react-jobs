@@ -23,14 +23,14 @@ services:
           action: sync
     tty: true
 
-  json_server:
-    image: node:alpine
-    container_name: json_server
-    working_dir: /app
-    volumes:
-    - .:/app
-    - /app/node_modules/
-    command: sh -c "npm install -g json-server && json-server --watch jobs.json --port 3000"
-    ports:
-      - 3000:3000
-    tty: true
+  # json_server:
+  #   image: node:alpine
+  #   container_name: json_server
+  #   working_dir: /app
+  #   volumes:
+  #   - .:/app
+  #   - /app/node_modules/
+  #   command: sh -c "npm install -g json-server && json-server --watch jobs.json --port 3000"
+  #   ports:
+  #     - 3000:3000
+  #   tty: true
